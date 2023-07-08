@@ -119,6 +119,24 @@ const App = () => {
       <ApiKey />
       <h1 className="text-2xl font-bold mb-4">Drag and Drop CSV File</h1>
       <Dropzone onFileDrop={handleFileDrop} />
+
+      <div className="flex justify-end">
+        <button
+          onClick={submit}
+          disabled={isButtonDisable}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-3 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-blue-500"
+        >
+          Run
+        </button>
+
+        <button
+          onClick={downLoad}
+          // disabled={isDownloadDisable}
+          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-3 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-green-500 ml-6"
+        >
+          Download
+        </button>
+      </div>
       {csvData.length > 0 && (
         <table className="mt-4  w-full">
           <thead>
@@ -164,22 +182,6 @@ const App = () => {
           </tbody>
         </table>
       )}
-
-      <button
-        onClick={submit}
-        disabled={isButtonDisable}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-3 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-blue-500"
-      >
-        Run
-      </button>
-
-      <button
-        onClick={downLoad}
-        // disabled={isDownloadDisable}
-        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-3 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-green-500 ml-6"
-      >
-        Download
-      </button>
     </div>
   )
 }
