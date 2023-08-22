@@ -37,7 +37,6 @@ def web_crawler(url, max_depth=3):
                         target_element = newsoup.find(class_="views-ajax-processed-processed member_website")
                         websiteOutput = target_element.get('href')
                         print(websiteOutput)
-                        output_textbox.insert(tk.END, websiteOutput + '\n')
 
                 except Exception as e:
                     print("Error:", e)
