@@ -38,17 +38,19 @@ def web_crawler(url, max_depth=3):
                         target_element = newsoup.find(class_="views-ajax-processed-processed member_website")
                         websiteOutput = target_element.get('href')
                         print(websiteOutput)
-                        data.append({'Website': websiteOutput})  # Add data to the list
+                        data.append({'url': link_url, 'Website': websiteOutput}) # Add data to the list
 
                 except Exception as e:
                     print("Error:", e)
+                    data.append({'url': link_url, 'Website': e}) # Add data to the list
+
 
     crawl(url, depth=1)
 
     # Write the data to a CSV file
     csv_filename = 'website_data.csv'
     with open(csv_filename, mode='w', newline='', encoding='utf-8') as csv_file:
-        fieldnames = ['Website']
+        fieldnames = ['url','Website']
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(data)
