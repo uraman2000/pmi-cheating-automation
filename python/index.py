@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 import tkinter as tk
+from tkinter import scrolledtext
 
 def web_crawler(url, max_depth=3):
     visited_urls = set()
@@ -37,6 +38,7 @@ def web_crawler(url, max_depth=3):
                         target_element = newsoup.find(class_="views-ajax-processed-processed member_website")
                         websiteOutput = target_element.get('href')
                         print(websiteOutput)
+                        data.append({'Website': websiteOutput})  # Add data to the list
 
                 except Exception as e:
                     print("Error:", e)
@@ -75,6 +77,10 @@ entry.pack()
 # Create a button
 button = tk.Button(root, text="inamo g", command=on_button_click)
 button.pack()
+
+
+output_textbox = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=40, height=10)
+output_textbox.pack()
 
 # Start the main event loop
 root.mainloop()
